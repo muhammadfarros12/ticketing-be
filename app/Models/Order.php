@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
     protected $fillable = [
         'transaction_time',
         'total_price',
