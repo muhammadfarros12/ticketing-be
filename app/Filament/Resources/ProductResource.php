@@ -17,7 +17,7 @@ class ProductResource extends Resource
 {
     protected static ?string $model = Product::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-clipboard-document';
 
     public static function form(Form $form): Form
     {
@@ -40,10 +40,17 @@ class ProductResource extends Resource
                     ->numeric(),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                Forms\Components\TextInput::make('status')
-                    ->required(),
-                Forms\Components\TextInput::make('criteria')
-                    ->required(),
+                Forms\Components\Select::make('status')
+                    ->options([
+                        'draft' => 'Draft',
+                        'published' => 'Published',
+                        'archived' => 'Archived'
+                    ]),
+                    Forms\Components\Select::make('criteria')
+                    ->options([
+                        'perorangan' => 'Perorangan',
+                        'rombongan' => 'Rombongan'
+                    ]),
                 Forms\Components\Toggle::make('favorite')
                     ->required(),
             ]);
